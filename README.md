@@ -36,6 +36,14 @@ This project demonstrates how to post and delete tweets on Twitter using the Twi
 
 ### Step 4: Install Dependencies
 Run the following commands to install necessary Go dependencies:
+```
+go get github.com/dghubble/oauth1
+go get github.com/joho/godotenv
 
-`go get github.com/dghubble/oauth1`
-`go get github.com/joho/godotenv`
+```
+
+### Step 5: Running the Program
+```
+go run main.go
+
+```
