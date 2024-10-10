@@ -35,24 +35,24 @@ func main() {
 	client := config.Client(oauth1.NoContext, token)
 
 	// Post a new tweet with a unique timestamp
-	tweetText := fmt.Sprintf("Hello from Rishi %s!", time.Now().Format(time.RFC3339))
+	tweetText := fmt.Sprintf("Hello from Rishwanth %s!", time.Now().Format(time.RFC3339))
 	tweetID, err := postTweet(client, tweetText)
 	if err != nil {
 		log.Fatalf("Error posting tweet: %v", err)
 	}
 	fmt.Printf("Posted tweet with ID: %s\n", tweetID)
 
-	// Wait for user input before deleting the tweet
+	// Wait for user input to delete the tweet
 	var input string
-	fmt.Println("Press 'd' to delete the tweet or any other key to exit:")
+	fmt.Printf("Enter the tweet ID to delete (or type 'exit' to quit): ")
 	fmt.Scanln(&input)
 
-	if input == "d" {
-		// Delete the tweet
-		if err := deleteTweet(client, tweetID); err != nil {
+	if input != "exit" {
+		// Delete the tweet by ID
+		if err := deleteTweet(client, input); err != nil {
 			log.Fatalf("Error deleting tweet: %v", err)
 		}
-		fmt.Printf("Deleted tweet with ID: %s\n", tweetID)
+		fmt.Printf("Deleted tweet with ID: %s\n", input)
 	} else {
 		fmt.Println("Exiting without deleting the tweet.")
 	}
