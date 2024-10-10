@@ -39,11 +39,21 @@ Run the following commands to install necessary Go dependencies:
 ```
 go get github.com/dghubble/oauth1
 go get github.com/joho/godotenv
-
 ```
 
 ### Step 5: Running the Program
 ```
 go run main.go
-
 ```
+# Post a Tweet:
+- The program loads your API keys from the .env file and sets up an OAuth1.0 client to authenticate with Twitter.
+- It uses the POST /2/tweets endpoint to send a new tweet.
+- The tweet text is generated with a unique timestamp to avoid duplication errors (e.g., Hello from Rishwanth 2024-10-10T10:30:00Z!).
+- The tweet ID will be displayed in the console.
+# Delete a Tweet:
+- The program uses the DELETE /2/tweets/{tweet_id} endpoint to delete a tweet by its ID.
+- You pass the tweet ID to the delete function.
+# Error Handling
+- The program checks for various error conditions:
+- If the tweet cannot be posted due to duplication or authentication issues, it logs the error message and exits.
+- In case of a failed DELETE operation, it also logs the error and prints details of the failure.
